@@ -1,87 +1,123 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const BussinessCardApp());
+  runApp(BusinessCardApp());
 }
 
-class BussinessCardApp extends StatelessWidget {
-  const BussinessCardApp({Key? key}) : super(key: key);
+class BusinessCardApp extends StatefulWidget {
+  BusinessCardApp({Key? key}) : super(key: key);
+
+  @override
+  State<BusinessCardApp> createState() => _BusinessCardAppState();
+}
+
+class _BusinessCardAppState extends State<BusinessCardApp> {
+  TextEditingController controller = TextEditingController();
+
+  String str = '';
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFFFF7B00),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 129,
-              backgroundColor: Colors.black,
-              child: CircleAvatar(
-                radius: 125,
-                backgroundColor: Colors.black,
-                backgroundImage: AssetImage(
-                    'images/pexels-dan-cristian-pădureț-1193743.jpg'),
-              ),
-            ),
-            Text(
-              'Rogina Kamel',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-                fontFamily: 'Pacifico',
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'FLUTTER DEVELOPER',
-                style: TextStyle(
+        backgroundColor: const Color(0xFFFF7B00),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircleAvatar(
+                  radius: 129,
+                  backgroundColor: Colors.black,
+                  child: CircleAvatar(
+                    radius: 125,
+                    backgroundColor: Colors.black,
+                    backgroundImage: AssetImage(
+                        'images/pexels-dan-cristian-pădureț-1193743.jpg'),
+                  ),
+                ),
+                Text(
+                  str,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontFamily: 'Pacifico',
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'FLUTTER DEVELOPER',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 158, 190, 170),
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const Divider(
                   color: Color.fromARGB(255, 158, 190, 170),
-                  fontSize: 16,
+                  thickness: 1,
+                  indent: 50,
+                  endIndent: 50,
+                  height: 10,
                 ),
-              ),
-            ),
-            Divider(
-              color: Color.fromARGB(255, 158, 190, 170),
-              thickness: 1,
-              indent: 50,
-              endIndent: 50,
-              height: 10,
-            ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  size: 32,
-                  color: Color(0xFFFF7B00),
-                ),
-                title: Text(
-                  '(+20) 1285236523',
-                  style: TextStyle(
-                    fontSize: 18,
+                const Card(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone,
+                      size: 32,
+                      color: Color(0xFFFF7B00),
+                    ),
+                    title: Text(
+                      '(+20) 126523',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: ListTile(
-                leading: Icon(
-                  Icons.mail,
-                  size: 32,
-                  color: Color(0xFFFF7B00),
-                ),
-                title: Text(
-                  'roginakamel2003@gmail.com',
-                  style: TextStyle(
-                    fontSize: 18,
+                const Card(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.mail,
+                      size: 32,
+                      color: Color(0xFFFF7B00),
+                    ),
+                    title: Text(
+                      'roginakamel2003@gmail.com',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.person,
+                      size: 32,
+                      color: Color(0xFFFF7B00),
+                    ),
+                    title: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          str = value;
+                        });
+                      },
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
